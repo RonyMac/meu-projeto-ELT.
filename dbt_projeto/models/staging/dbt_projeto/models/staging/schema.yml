@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_clientes
+    description: "Tabela de clientes higienizada e padronizada a partir do CSV bruto"
+    columns:
+      - name: cliente_id
+        description: "Chave primária da tabela de clientes (antigo ID)"
+        tests:
+          - unique    # Garante que não existem IDs duplicados na base limpa
+          - not_null  # Garante que o pipeline barrou todas as linhas sem ID
