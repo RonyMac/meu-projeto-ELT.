@@ -1,0 +1,19 @@
+name: 'meu_projeto_ETL'
+version: '1.0.0'
+config-version: 2
+
+# Define onde o dbt deve procurar os modelos de transformação SQL
+model-paths: ["models"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+# Configuração do perfil de conexão (aponta para o banco)
+profile: 'default'
+
+# Define que os modelos da pasta staging serão criados como Views e os marts como Tabelas
+models:
+  meu_projeto_elt:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
